@@ -61,9 +61,8 @@ public class CFM {
 
         if (_blocksNearby == null)
             throw new JsonParseException("Missing blocks_nearby");
-        int minBlocksNearby = this.type == Type.FLOWING_MIXIN ? 1 : 0;
-        if (_blocksNearby.size() < minBlocksNearby || _blocksNearby.size() > 5)
-            throw new JsonParseException("Invalid blocks_nearby. There must be at least one block nearby (0 works too if type = 'block_transform') and less than 5 blocks");
+        if (_blocksNearby.size() > 5)
+            throw new JsonParseException("Invalid blocks_nearby. There must be less than 5 blocks");
 
         blocksNearby = new ArrayList<>();
         for (String s : _blocksNearby) {
